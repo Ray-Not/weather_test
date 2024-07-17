@@ -21,4 +21,4 @@ win: `source venv/Scripts/activate`
 Docker, Django
 ## Испольовано
 Только докер, остальное в превью
-По запросу реализую все, используя React, JWT Tokens и docker-compose
+По запросу реализую все, используя React (MUI для автозаполнения), JWT Tokens и docker-compose
