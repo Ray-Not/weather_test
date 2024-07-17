@@ -10,28 +10,36 @@
 <body>
   <div class="container mt-4">
     <h1 class="text-center">Прогноз погоды</h1>
-
+    <div class="row m-4 d-flex justify-content-center text-center">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Получить прогноз</button>
+      </form>
+    </div>
     {% if error %}
     <div class="alert alert-danger" role="alert">
       {{ error }}
     </div>
     {% else %}
-    <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <th scope="row">Время</th>
-          {% for time in times %}
-          <td>{{ time }}</td>
-          {% endfor %}
-        </tr>
-        <tr>
-          <th scope="row">Температура (&deg;C)</th>
-          {% for temp in temperatures %}
-          <td>{{ temp }}</td>
-          {% endfor %}
-        </tr>
-      </tbody>
-    </table>
+      {% if times and temperatures %}
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Время</th>
+            {% for time in times %}
+            <td>{{ time }}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <th scope="row">Температура (&deg;C)</th>
+            {% for temp in temperatures %}
+            <td>{{ temp }}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+      {% endif %}
     {% endif %}
   </div>
 </body>
