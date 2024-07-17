@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <title>Прогноз погоды</title>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center">Прогноз погоды</h1>
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    {% else %}
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th scope="row">Время</th>
+          {% for time in times %}
+          <td>{{ time }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">Температура (&deg;C)</th>
+          {% for temp in temperatures %}
+          <td>{{ temp }}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</body>
+</html>
